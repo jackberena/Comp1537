@@ -1,0 +1,36 @@
+
+a:link {
+  color: red;
+}
+
+a:visited {
+  color: green;
+}
+
+a:hover {
+  color: hotpink;
+}
+
+a:active {
+  color: blue;
+}
+
+td, th, table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table table tr td{
+  color:skyblue;
+}
+
+td h3{
+  background-color:  lavender;
+  color: black;
+}
+
+h3{
+  background-color:  blue;
+  color: white;
+  border: 3px solid black;
+}
