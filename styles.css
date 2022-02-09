@@ -56,7 +56,7 @@ a {
   margin-bottom: 5px;
   float: right;
   padding-bottom: 0;
-  width: 14em;
+  width: 20em;
   height: 0;
 }
 
@@ -107,4 +107,14 @@ a {
 
 a {
   color: darkblue
+}
+
+.image{
+  float: right;
+  border: 2px solid lightgray;
+}
+#subheading{
+  position: absolute;
+  bottom: -265px;
+  font-weight: normal;
 }
