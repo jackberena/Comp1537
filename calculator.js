@@ -55,12 +55,31 @@ function divide(){
     jQuery('#history').html(new_answer);
 
 }
+
+function increase(){
+    inc =$('#history').css("font-size");
+
+    inc =parseInt(inc);
+    $('#history').css("font-size", (inc +5)+ "px");
+    
+}
+
+function decrease(){
+    dec = $('#history').css("font-size");
+
+    dec =parseInt(dec);
+    $('#history').css("font-size", (dec - 5) + "px");
+}
+
 function setup() {
     jQuery("#add").click(add);
     jQuery("#subtract").click(subtract);
     jQuery("#multiply").click(multiply);
     jQuery("#divide").click(divide);
-    
+    jQuery("#inc").click(increase);
+    jQuery("#decrease").click(decrease)
 }
+
+
 
 jQuery(document).ready(setup);
