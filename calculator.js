@@ -8,9 +8,9 @@ function add() {
     jQuery('#answer').text(answer);
 
     
-    history_list = "<span id='lists'>" + answer + hide_button + "</span>";
+    history_list = "<div id='lists'>" + answer + hide_button + "</div>";
     previous_answer = jQuery('#history').html();
-    new_answer = previous_answer + history_list + '<br>';
+    new_answer = previous_answer + history_list ;
     jQuery('#history').html(new_answer);
   
 
