@@ -28,7 +28,7 @@ function call_ajax(){
 function display_image(){
 
     photo = $(this).attr('id');
-    $("#right-").html(`<img src="http://image.tmdb.org/t/p/w500/${photo}" width=100%">`)
+    $("#right").html(`<img src="http://image.tmdb.org/t/p/w500/${photo}" width=100%">`)
 }
 
 
