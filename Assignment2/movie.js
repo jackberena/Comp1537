@@ -40,4 +40,3 @@ function setup() {
 
 
 jQuery(document).ready(setup)
-
