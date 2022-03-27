@@ -4,8 +4,8 @@ page_size = null;
 
 
 function paginate_menu(movie_data){
-    $("#numbered_buttons").empty();
     $("header").show()
+    $("#numbered_buttons").empty();
      number_of_pages = Math.ceil(movie_data.results.length /page_size);
     for(i = 1 ; i <= number_of_pages ; i++)
     {
@@ -16,10 +16,15 @@ function paginate_menu(movie_data){
     
 }
 function process_response(data){
-    recieved_object =data;
-    for(i = 0; i <data.results.length; i++) {
+    $("#results").empty()
+    page_size =Number($("option:selected").val())
+    start = page_size * (current_page_id -1)
+    stop_index = page_size * (current_page_id -1) + page_size
+    for(i = start; i < stop_index &&  (i <data.results.length); i++) {
         $("#results").append(data.results[i].original_title + "<br>");
         $("#results").append(data.results[i].overview + "<br>") ;
+        $("#results").append("<a>") + (i+1) + "</a>";
+        
 
         let poster_path = data.results[i].poster_path;
         let img_element = `<img src="http://image.tmdb.org/t/p/w500/${poster_path}">`
@@ -30,7 +35,7 @@ function process_response(data){
         bigger_image =`<button id="${backdrop_path}" class="image_button"> show image</button>`
         $("#results").append(bigger_image + "<br>");
     }
-    paginate_menu();
+    paginate_menu(data);
 }
 function call_ajax(){
     x = $("#movie_name").val();
@@ -41,6 +46,8 @@ function call_ajax(){
         "success" : process_response,
     })
     $("header").show()
+    $("#prev").show()
+    $("#next").show()
 }   
 
 
@@ -52,34 +59,34 @@ function display_image(){
 
 function header_button(){
     x =$(this).attr("id");
-    $("#results").html(`<h2>Display(${x}, ${page_size})<h2>`)
-    current_page_id =Number(x);
-    $("#prev").show()
-    $("#next").show()
+    //$("#results").html(`<h2>Display(${x}, ${page_size})<h2>`)
+    call_ajax()
 }
 
 function first(){
     $("#results").html(`<h2>Display(1, ${page_size})<h2>`)
-    $("#prev").show()
-    $("#next").show()
+    current_page_id = 1
+    call_ajax()
 }
 
 function last(){
-    $("#results").html(`<h2>Display(7, ${page_size})<h2>`)
-    $("#prev").show()
-    $("#next").show()
+    $("#results").html(`<h2> Display(${current_page_id}, ${page_size})<h2>`);
+    current_page_id = number_of_pages
+    call_ajax()
 }
 
 function prev(){
     if (current_page_id > 1)
     current_page_id--;
+    call_ajax();
     $("#results").html(`<h2> Display(${current_page_id}, ${page_size})<h2>`);
 
 }
 
 function next(){
-    if(current_page_id < 7)
+    if(current_page_id < number_of_pages)
     current_page_id++;
+    call_ajax()
     $("#results").html(`<h2> Display(${current_page_id}, ${page_size})<h2>`);
 }
 
@@ -95,9 +102,7 @@ function setup() {
     $('#get_movie').click(call_ajax);
     $("body").on("click", ".image_button", display_image)
 
-    $('header button.number').click(header_button)
-
-    $('body').on("click", ".numbered_buttons_class",header_button)
+    $('body').on('click','.numbered_buttons_class',header_button)
 
     $("#first").click(first)
 
@@ -110,8 +115,6 @@ function setup() {
     $("#prev").hide()
 
     $("#next").hide()
-
-    $("option:slected").change(change_dropdown_menu)
 
     $("select").change(change_dropdown_menu);
 
