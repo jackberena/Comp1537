@@ -8,8 +8,25 @@
     <title>Search Movie</title>
   </head>
   <body>
+    <header>
+      <select name="page_size" id="page_size">
+        <option value="3">3</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select>
+
+    <button id="first"> first </button>
+    <button id="prev">Prev.</button>
+    <div id=numbered_buttons></div>
+    <button id="next">Next</button>
+    <button id="last"> last </button>
+    </header>
+    <br>
     Seach TMDB by title<input id="movie_name" type="text"/><br>
     <button id="get_movie"> Search</button>
+
+    <!-- <h1>Display( ,page size)</h1> -->
     
   
     <div>
