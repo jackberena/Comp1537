@@ -6,7 +6,7 @@ app.listen(process.env.PORT || 5000, function (err) {
         console.log(err);
 })
 
-
+ 
 const bodyparser = require("body-parser");
     app.use(bodyparser.urlencoded({
     extended: true
@@ -28,7 +28,7 @@ const unicornModel = mongoose.model("unicorns", unicornSchema);
 app.post("/findUnicornByName", function(req, res) {
         console.log("req. has been recieved")
         console.log(req.body.unicornName)
-        unicornModel.find({name: req.body.unicornName}, function(err, unicorns){
+        unicornModel.find({name:req.body.unicornName}, function(err, unicorns){
             if (err){
               console.log("Error " + err);
             }else{

@@ -11,10 +11,10 @@ function findUnicornByName() {
     console.log($("#unicornName").val())
 
     $.ajax({
-        url: "https://pure-taiga-18795.herokuapp.com/findUnicornByName",
+        url: "https://fathomless-fjord-95588.herokuapp.com/findUnicornByName",
         type: "POST",
         data: {
-            "unicornName": $("#unicornName").val()
+            "name": ""
         },
         success: process_res
     })
@@ -27,7 +27,7 @@ function findUnicornByWeight() {
     console.log($("#higherWeight").val())
 
     $.ajax({
-        url: "https://pure-taiga-18795.herokuapp.com/findUnicornByWeight",
+        url: "https://fathomless-fjord-95588.herokuapp.com/findUnicornByWeight",
         type: "POST",
         data: {
             "lowerWeight": $("#lowerWeight").val(),
@@ -47,7 +47,7 @@ function findUnicornByFood() {
         appleIsChecked = "checked"
 
     $.ajax({
-        url: "https://pure-taiga-18795.herokuapp.com/findUnicornByFood",
+        url: "https://fathomless-fjord-95588.herokuapp.com/findUnicornByFood",
         type: "POST",
         data: {
             "appleIsChecked": appleIsChecked,
@@ -64,7 +64,7 @@ function filterUnicorn() {
     if ($("#unicornNameFilter").is(":checked")) {
         unicorn_name = "checked"
     }
-
+ 
     if ($("#unicornWieghtFilter").is(":checked")) {
         unicorn_weight = "checked"
     }
